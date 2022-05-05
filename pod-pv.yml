@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker-test-pod
+spec:
+  containers:
+  - image: docker-example:0.0.1
+    name: docker-test
+    volumeMounts: 
+    - name: pv-test
+      mountPath: /logs
+  volumes:
+  - name: pv-test
+    persistentVolumeClaim:
+     claimName: pvc-claim-2

@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: docker-test-batch
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: docker-test
+            image: docker-example:0.0.1
+            imagePullPolicy: IfNotPresent
+            volumeMounts: 
+            - name: pv-test
+              mountPath: /logs
+
+          restartPolicy: OnFailure
+          volumes:
+          - name: pv-test
+            persistentVolumeClaim:
+             claimName: pvc-claim-2
