@@ -47,7 +47,7 @@ docker build -t docker-example:0.0.1 -f /Users/dinghaim/Documents/workspace-spri
 ```
 docker desktop의 kubernetes 일 경우 로컬 이미지 바로 사용 가능
 
-kubectl run name --image=&lt;image&gt;:&#60;tag&gt;
+kubectl run name --image=<image>:<tag>
 
 kubectl run docker-example --image=docker-example:0.0.1
 ```
